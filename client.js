@@ -13,6 +13,31 @@ const connect = function () {
     console.log("Server says: ", data);
   });
 
+  conn.on("connect", () => {
+    conn.write("Name: AVN");
+  });
+
+  // conn.on("connect", () => {
+  //   setTimeout(() => {
+  //     conn.write("Move: up")
+  //   }, 50)
+  // });
+
+  // conn.on("connect", () => {
+  //   setTimeout(() => {
+  //     conn.write("Move: up")
+  //   }, 100)
+  // });
+
+  // conn.on("connect", () => {
+  //   setInterval(() => {
+  //     conn.write("Move: up")
+  //   }, 50)
+  // });
+
+
+
+
   return conn;
 };
 
