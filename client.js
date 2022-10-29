@@ -1,11 +1,13 @@
+// IMPORTS
 const net = require("net");
+const { IP, PORT } = require("./constants");
 
+// CONNECT FUNCTION
 const connect = function () {
   const conn = net.createConnection({
-    host: "localhost",
-    port: 50541
+    host: IP,
+    port: PORT,
   });
-
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
@@ -15,30 +17,14 @@ const connect = function () {
 
   conn.on("connect", () => {
     conn.write("Name: AVN");
+    // can change AVN to be whatever 3 character initial ythe player would like
+    conn.write("Say: ");
+    conn.write("Connected to Snake Server");
   });
-
-  // conn.on("connect", () => {
-  //   setTimeout(() => {
-  //     conn.write("Move: up")
-  //   }, 50)
-  // });
-
-  // conn.on("connect", () => {
-  //   setTimeout(() => {
-  //     conn.write("Move: up")
-  //   }, 100)
-  // });
-
-  // conn.on("connect", () => {
-  //   setInterval(() => {
-  //     conn.write("Move: up")
-  //   }, 50)
-  // });
-
-
-
-
   return conn;
 };
 
-module.exports = {connect};
+// EXPORTS
+module.exports = {
+  connect,
+};
